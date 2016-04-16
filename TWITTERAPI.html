@@ -3,8 +3,11 @@
 </head>
 
 <body>
-  <h1>Twitter API pour Kepasa</h1>
-  {{> tweets}}
+	<div class="container-fluid">
+	  <h1 style="text-align:center;">Twitter API pour Kepasa</h1>
+	  {{> tweets}}
+	  {{> soirees}}
+	</div>
 </body>
 
 <template name="hello">
@@ -13,13 +16,19 @@
 </template>
 
 <template name ="tweets">
-	<h2>Tweets RATP RERA</h2>
-	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERA_1 }}</h4>
-	<h4><span style="color:red;">Avant dernier tweet : </span> {{ tweet_RERA_2 }}</h4>
-	<h2>Tweets RATP RERB</h2>
-	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERB_1 }}</h4>
-	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERB_2 }}</h4>
-	<h2>Tweets RATP RERC</h2>
-	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERC_1 }}</h4>
-	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERC_2 }}</h4>
+	<h2>Tweets RATP <span style="color:#16a085;">RERA</span></h2>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERA_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Avant dernier tweet : </span> {{ tweet_RERA_2 }}</h4>
+	<h2>Tweets RATP <span style="color:#16a085;">RERB</span></h2>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERB_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERB_2 }}</h4>
+	<h2>Tweets RATP <span style="color:#16a085;">RERC</span></h2>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERC_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERC_2 }}</h4>
+</template>
+
+<template name="soirees">
+	<h2>Soirées populaires Aujourd'hui</h2>
+	<h4><span style="color:#e74c3c;">Dernière soirée : </span> {{ soiree_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Avant dernière soirée : </span> {{ soiree_2 }}</h4>
 </template>
