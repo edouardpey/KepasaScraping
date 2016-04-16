@@ -1,0 +1,25 @@
+<head>
+  <title>TWITTERAPI</title>
+</head>
+
+<body>
+  <h1>Twitter API pour Kepasa</h1>
+  {{> tweets}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name ="tweets">
+	<h2>Tweets RATP RERA</h2>
+	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERA_1 }}</h4>
+	<h4><span style="color:red;">Avant dernier tweet : </span> {{ tweet_RERA_2 }}</h4>
+	<h2>Tweets RATP RERB</h2>
+	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERB_1 }}</h4>
+	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERB_2 }}</h4>
+	<h2>Tweets RATP RERC</h2>
+	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERC_1 }}</h4>
+	<h4><span style="color:red;">Dernier tweet : </span> {{ tweet_RERC_2 }}</h4>
+</template>
