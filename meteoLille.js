@@ -1,24 +1,24 @@
 if (Meteor.isClient) {
 
-  Meteor.call('getMeteo_Paris', function (error, result) {
+  Meteor.call('getMeteo_Lille', function (error, result) {
     if (error) {
       console.log("error", error);
     };
 
     console.log(result[0]);
 
-    Session.set("meteo0", result[0]);
-    Session.set("meteo1", result[1]);
+    Session.set("meteoL0", result[0]);
+    Session.set("meteoL1", result[1]);
   });
 
-  Template.meteoParis.helpers({
-    meteo_0: function () {
-      return Session.get("meteo0");
+  Template.meteoLille.helpers({
+    meteo_Lille_0: function () {
+      return Session.get("meteoL0");
     }
   });
-    Template.meteoParis.helpers({
-    meteo_1: function () {
-      return Session.get("meteo1");
+    Template.meteoLille.helpers({
+    meteo_Lille_1: function () {
+      return Session.get("meteoL1");
     }
   });
 
@@ -29,8 +29,8 @@ if (Meteor.isServer) {
     var cheerio = Meteor.npmRequire('cheerio');
 
     Meteor.methods({
-      getMeteo_Paris: function () {
-        result = Meteor.http.get("http://www.meteo-paris.com/ile-de-france/previsions.php");
+      getMeteo_Lille: function () {
+        result = Meteor.http.get("http://www.meteo-lille.net/previsions.php");
         $ = cheerio.load(result.content);
         // var open = $('div.permalink-inner.permalink-tweet-container > div > div > p').text();
         var jourj = $('#t15j_ensemble > div:nth-child(3) > div.t15j_infos.t15j_border_top_none > div.t15j_infos_txt > span > p').text();

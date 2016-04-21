@@ -7,7 +7,8 @@
 	  <h1 style="text-align:center;">Twitter API pour Kepasa</h1>
 	  {{> tweets}}
 	  {{> soirees}}
-	  {{> meteo}}
+	  {{> meteoParis}}
+	  {{> meteoLille}}
 	</div>
 </body>
 
@@ -34,8 +35,14 @@
 	<h4><span style="color:#e74c3c;">Avant dernière soirée : </span> {{ soiree_2 }}</h4>
 </template>
 
-<template name="meteo">
+<template name="meteoParis">
 	<h2>Meteo Paris</h2>
 	<h4><span style="color:#e74c3c;">Meteo maintenant : </span> {{ meteo_0 }}</h4>
-	<h4><span style="color:#e74c3c;">Meteo +1h : </span> {{ meteo_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Meteo demain : </span> {{ meteo_1 }}</h4>
+</template>
+
+<template name="meteoLille">
+	<h2>Meteo Lille</h2>
+	<h4><span style="color:#e74c3c;">Meteo maintenant : </span> {{ meteo_Lille_0 }}</h4>
+	<h4><span style="color:#e74c3c;">Meteo demain : </span> {{ meteo_Lille_1 }}</h4>
 </template>
