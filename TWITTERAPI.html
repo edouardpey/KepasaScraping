@@ -3,12 +3,13 @@
 </head>
 
 <body>
-	<div class="container-fluid">
-	  <h1 style="text-align:center;">Twitter API pour Kepasa</h1>
+	<div class="container">
+	  <h1 style="text-align:center;">API pour Kepasa</h1>
 	  {{> tweets}}
 	  {{> soirees}}
 	  {{> meteoParis}}
 	  {{> meteoLille}}
+	  {{> eurostar}}
 	</div>
 </body>
 
@@ -46,3 +47,18 @@
 	<h4><span style="color:#e74c3c;">Meteo maintenant : </span> {{ meteo_Lille_0 }}</h4>
 	<h4><span style="color:#e74c3c;">Meteo demain : </span> {{ meteo_Lille_1 }}</h4>
 </template>
+<template name="eurostar">
+	<h2>Arrivées d'Eurostars à Paris Gare du Nord</h2>
+	<h4>{{get_eurostar_1}}</h4>
+	{{> reactiveTable collection=tableEurostar}}
+</template>
+
+
+
+
+
+
+
+
+
+
