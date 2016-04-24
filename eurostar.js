@@ -7,12 +7,8 @@ if (Meteor.isClient) {
       console.log("error", error);
     };
 
-    //console.log(result[0]);
+      Session.set("eurostar", result[0]);
 
-      Session.set("eurostar", result[5]);
-
-
-    //Session.set("tweet2", result[1]);
   });
 
   Template.eurostar.helpers({
@@ -25,12 +21,6 @@ if (Meteor.isClient) {
       return EurostarDB.find().fetch();
     }
   });
-    /*Template.tweets.helpers({
-    tweet_RERA_2: function () {
-      return Session.get("tweet2");
-    }
-  });*/
-
 }
 
 if (Meteor.isServer) {
@@ -41,8 +31,6 @@ if (Meteor.isServer) {
       get_eurostar: function () {
         result = Meteor.http.get("https://www.horairetrain.net/horaires-londres-paris-20160423.html");
         $ = cheerio.load(result.content);
-        // var open = $('div.permalink-inner.permalink-tweet-container > div > div > p').text();
-        var body = $('body > div.page.container > div:nth-child(3) > div.h-l-c > div.horaires-container > div:nth-child(n) > div > div.t-l-c > div > div:nth-child(n)').text();
 
         var eurostars = [];
         var eurostarsParis = [];
@@ -57,8 +45,6 @@ if (Meteor.isServer) {
                 EurostarDB.insert(row);
               };
             });
-
-            eurostars.join(', ');
 
         return eurostarsParis;
       },

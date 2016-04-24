@@ -1,3 +1,5 @@
+TweetRERA = new Mongo.Collection('tweetRERA');
+
 
 if (Meteor.isClient) {
 
@@ -15,6 +17,9 @@ if (Meteor.isClient) {
   Template.tweets.helpers({
     tweet_RERA_1: function () {
       return Session.get("tweet1");
+    },
+    tableRERA: function () {
+      return TweetRERA.find().fetch();
     }
   });
     Template.tweets.helpers({
@@ -37,9 +42,18 @@ if (Meteor.isServer) {
         var body = $('div > div.content > div.js-tweet-text-container > p').text();
 
         var tweets = [];
+        var date = [];
+        TweetRERA.remove({});
 
             $('div.js-tweet-text-container > p').each(function(i, elem) {
               tweets[i] = $(this).text();
+              $('div > div.content > div.stream-item-header > small > a > span._timestamp.js-short-timestamp.js-relative-timestamp').each(function(u, elem){
+                date[u] = $(this).text();
+              });
+              var row = {};
+              row["tweets"]=tweets[i];
+              row["date"]=date[i];
+              TweetRERA.insert(row);
             });
 
             tweets.join(', ');
