@@ -11,6 +11,7 @@
 	  {{> meteoParis}}
 	  {{> meteoLille}}
 	  {{> eurostar}}
+	  {{> sneetch}}
 	</div>
 </body>
 
@@ -62,6 +63,10 @@
 	<h2>Arrivées d'Eurostars à Paris Gare du Nord</h2>
 	<h4>{{get_eurostar_1}}</h4>
 	{{> reactiveTable collection=tableEurostar}}
+</template>
+<template name="sneetch">
+	<h2>Evènements étudiants à Lille (Sneetch)</h2>
+	{{> reactiveTable collection=evenementsSneetch}}
 </template>
 
 

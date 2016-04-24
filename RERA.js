@@ -51,9 +51,12 @@ if (Meteor.isServer) {
                 date[u] = $(this).text();
               });
               var row = {};
-              row["tweets"]=tweets[i];
-              row["date"]=date[i];
-              TweetRERA.insert(row);
+              if (tweets[i].includes("trafic")) {
+                row["tweets"]=tweets[i]; //Ne récupérons que les tweets parlant de trafic
+                row["date"]=date[i];
+                TweetRERA.insert(row);
+              };
+              
             });
 
             tweets.join(', ');

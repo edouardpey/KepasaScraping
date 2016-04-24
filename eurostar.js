@@ -29,7 +29,7 @@ if (Meteor.isServer) {
 
     Meteor.methods({
       get_eurostar: function () {
-        result = Meteor.http.get("https://www.horairetrain.net/horaires-londres-paris-20160423.html");
+        result = Meteor.http.get("https://www.horairetrain.net/horaires-londres-paris-20160424.html");
         $ = cheerio.load(result.content);
 
         var eurostars = [];
