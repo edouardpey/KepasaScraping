@@ -1,3 +1,4 @@
+ManifestationLille = new Mongo.Collection('manifestationLille');
 
 if (Meteor.isClient) {
 
@@ -39,16 +40,21 @@ if (Meteor.isServer) {
         var manifestation = [];
         var date=[];
         var information=[];
+        ManifestationLille.remove({});
 
             $('div.rs_event_details > span:nth-child(1) > a').each(function(i, elem) {
               manifestation[i] = $(this).text();
             $(' div.rs_event_details > span:nth-child(2)').each(function(u,elem){
                  date[u]=$(this).text();
               });
+            var row = {};
+            row["manifestation"] = manifestation[i];
+            row["date"] = date[i];
+            ManifestationLille.insert(row);
             information.push(manifestation[i]+ " " + date[i]);                            
             });
 
-        return information;
+        return information
 
       },
 
