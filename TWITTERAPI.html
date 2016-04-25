@@ -6,6 +6,7 @@
 	<div class="container-fluid">
 	  <h1 style="text-align:center;">Twitter API pour Kepasa</h1>
 	  {{> tweets}}
+	  {{> infolille}}
 	  {{> soirees}}
 	  {{> meteoParis}}
 	  {{> meteoLille}}
@@ -15,6 +16,12 @@
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="infolille">
+	<h2>Manifestation <span style="color:#16a085;">Lille</span></h2>
+	<h4><span style="color:#e74c3c;">Prochaine manifestation : </span> {{ info_campuslille_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Prochaine manifestation : </span> {{ info_campuslille_2 }}</h4>
 </template>
 
 <template name ="tweets">
@@ -27,6 +34,9 @@
 	<h2>Tweets RATP <span style="color:#16a085;">RERC</span></h2>
 	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERC_1 }}</h4>
 	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RERC_2 }}</h4>
+	<h2>Tweets RATP <span style="color:#16a085;">Transports IDF</span></h2>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RATP_1 }}</h4>
+	<h4><span style="color:#e74c3c;">Dernier tweet : </span> {{ tweet_RATP_2 }}</h4>
 </template>
 
 <template name="soirees">
