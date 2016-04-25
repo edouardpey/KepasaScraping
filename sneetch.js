@@ -30,6 +30,7 @@ if (Meteor.isServer) {
         var eventSneetch = [];
         var date_debut = [];
         var date_fin = [];
+        var duree=[];
         EvenementsSneetch.remove({});
 
             $('h2 > a').each(function(i, elem) {
@@ -37,13 +38,18 @@ if (Meteor.isServer) {
               $('div.tribe-events-event-meta > div.author > div.tribe-event-schedule-details > span.tribe-event-date-start').each(function(u, elem){
                 date_debut[u] = $(this).text();
               });
-              $('div.tribe-events-event-meta > div.author > div.tribe-event-schedule-details > span.tribe-event-date-start').each(function(u, elem){
+              $('div.tribe-events-event-meta > div.author > div.tribe-event-schedule-details > span.tribe-event-date-end').each(function(u, elem){
                 date_fin[u] = $(this).text();
               });
+              $('div.tribe-events-event-meta > div.author > div.tribe-event-schedule-details > span.tribe-event-time').each(function(u, elem){
+                duree[u] = $(this).text();
+              });
+
               var row = {};
               row["eventSneetch"] = eventSneetch[i];
               row["début"] = date_debut[i];
               row["fin"] = date_fin[i];
+              row["durée"]= duree[i]
               //row["description"] = description[i];
               EvenementsSneetch.insert(row);
             });
