@@ -9,18 +9,18 @@ if (Meteor.isClient) {
 
     console.log(result[0]);
 
-    Session.set("tweet1", result[0]);
-    Session.set("tweet2", result[1]);
+    Session.set("infocampuslille1", result[0]);
+    Session.set("infocampuslille2", result[1]);
   });
 
   Template.infolille.helpers({
     info_campuslille_1: function () {
-      return Session.get("tweet1");
+      return Session.get("infocampuslille1");
     }
   });
     Template.infolille.helpers({
     info_campuslille_2: function () {
-      return Session.get("tweet2");
+      return Session.get("infocampuslille2");
     }
   });
 

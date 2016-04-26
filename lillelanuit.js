@@ -1,5 +1,4 @@
 
-
 if (Meteor.isClient) {
 
   Meteor.call('getsoiree_lille', function (error, result) {
@@ -34,29 +33,16 @@ if (Meteor.isServer) {
       getsoiree_lille: function () {
         result = Meteor.http.get("http://www.lillelanuit.com/agenda/soirees/");
         $ = cheerio.load(result.content);
-        // var open = $('div.permalink-inner.permalink-tweet-container > div > div > p').text();
-        // var body = $('div > div.content > div.js-tweet-text-container > p').text();
+        
+        var evenementLille1 = $('#event-331283 > article > div > div > h2 > a').text();
+        var evenementLille2 = $('#event-331541 > article > div > div > h2 > a').text();
+        var lieu1 = $('#event-331283 > article > div > div > div:nth-child(2) ').text();
+        var lieu2 = $('#event-331541 > article > div > div > div:nth-child(2) ').text();
+        
+        var information =[];
+        information.push(evenementLille1 +". Où? "+ lieu1, evenementLille2+". Où? "+lieu2);
 
-        var evenementLille = [];
-        var lieu =[];
-        var information= [];
-
-            $('article > div > div > h2 > a').each(function(i, elem) {
-              evenementLille[i] = $(this).text();
-            });
-           /* $('article > div > div > div:nth-child(2)').each(function(i, elem) {
-              lieu[u] = $(this).text();
-            });
-            var row={};
-            row["evenement"] = evenementLille[i];
-            row["lieu"] = lieu[i];
-            information.push(evenementLille[i]+ " " + lieu[i]);                            
-            });
-
-        return information*/
-            evenementLille.join(', ');
-
-          return evenementLille;
+        return information;
 
    
       },
