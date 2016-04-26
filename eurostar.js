@@ -29,7 +29,19 @@ if (Meteor.isServer) {
 
     Meteor.methods({
       get_eurostar: function () {
-        result = Meteor.http.get("https://www.horairetrain.net/horaires-londres-paris-20160424.html");
+          var today = new Date(); //récupérationd de la date.
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                dd='0'+dd
+            } 
+            if(mm<10){
+                mm='0'+mm
+            } 
+          var date = yyyy+mm+dd;
+
+        result = Meteor.http.get("https://www.horairetrain.net/horaires-londres-paris-"+date+".html");
         $ = cheerio.load(result.content);
 
         var eurostars = [];
