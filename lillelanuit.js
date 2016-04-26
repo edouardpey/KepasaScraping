@@ -34,13 +34,23 @@ if (Meteor.isServer) {
         result = Meteor.http.get("http://www.lillelanuit.com/agenda/soirees/");
         $ = cheerio.load(result.content);
         
-        var evenementLille1 = $('#event-331283 > article > div > div > h2 > a').text();
-        var evenementLille2 = $('#event-331541 > article > div > div > h2 > a').text();
-        var lieu1 = $('#event-331283 > article > div > div > div:nth-child(2) ').text();
-        var lieu2 = $('#event-331541 > article > div > div > div:nth-child(2) ').text();
+        var evenementLille= []
+        var lieu = []
+
+        $(' article > div > div > h2 > a').each(function(i, elem){
+          evenementLille[i]=$(this).text();
+        });
+        
+        $(' article > div > div > div:nth-child(n) ').each(function(u, elem){
+          lieu[u]=$(this).text();
+        });
         
         var information =[];
-        information.push(evenementLille1 +". Où? "+ lieu1, evenementLille2+". Où? "+lieu2);
+        
+        for (var i = 0; i < 10; i++) {
+          information.push(evenementLille[i] +". Où? "+ lieu[i]);
+        };
+        
 
         return information;
 
