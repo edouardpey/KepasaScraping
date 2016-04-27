@@ -10,8 +10,8 @@ if (Meteor.isClient) {
 
     console.log(result[0]);
 
-    Session.set("tweetR1", result[0]);
-    Session.set("tweetR2", result[1]);
+    Session.set("tweetR1", result[1]);
+    Session.set("tweetR2", result[2]);
   });
 
   Template.tweets.helpers({
@@ -26,8 +26,7 @@ if (Meteor.isClient) {
     }
   });
 
-    //insérer les tweets dans la base de données 
-    //voir Keapasa big data
+
 
     
 

@@ -8,6 +8,7 @@
 	  {{> tweets}}
 	  {{> infolille}}
 	  {{> soirees}}
+	  {{> soireesLille}}
 	  {{> meteoParis}}
 	  {{> meteoLille}}
 	  {{> eurostar}}
@@ -52,6 +53,11 @@
 	<h4><span style="color:#e74c3c;">Avant dernière soirée : </span> {{ soiree_2 }}</h4>
 </template>
 
+<template name="soireesLille">
+	<h2>Soirees Lille d'aujourd'hui</h2>
+	{{> reactiveTable collection=tablelillelanuit}}	
+</template>
+
 <template name="meteoParis">
 	<h2>Meteo Paris</h2>
 	<h4><span style="color:#e74c3c;">Meteo maintenant : </span> {{ meteo_0 }}</h4>
@@ -63,6 +69,7 @@
 	<h4><span style="color:#e74c3c;">Meteo maintenant : </span> {{ meteo_Lille_0 }}</h4>
 	<h4><span style="color:#e74c3c;">Meteo demain : </span> {{ meteo_Lille_1 }}</h4>
 </template>
+
 <template name="eurostar">
 	<h2>Arrivées d'Eurostars à Paris Gare du Nord</h2>
 	<h4>{{get_eurostar_1}}</h4>
