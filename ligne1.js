@@ -9,6 +9,7 @@ if (Meteor.isClient) {
 
     Session.set("tweetC1", result[0]);
     Session.set("tweetC2", result[1]);
+    Session.set("tweetC3", result[3]);
   });
     
 
