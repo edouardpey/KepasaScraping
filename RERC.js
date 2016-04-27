@@ -36,6 +36,7 @@ if (Meteor.isServer) {
         // var open = $('div.permalink-inner.permalink-tweet-container > div > div > p').text();
         var body = $('div > div.content > div.js-tweet-text-container > p').text();
 
+
         var tweets = [];
 
             $('div.js-tweet-text-container > p').each(function(i, elem) {
