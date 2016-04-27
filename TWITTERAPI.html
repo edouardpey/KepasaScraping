@@ -15,6 +15,7 @@
 	  {{> sneetch}}
 	  {{> leMonde}}
 	  {{> residentadvisor}}
+	  {{>grevesLille}}
 	</div>
 </body>
 
@@ -91,6 +92,11 @@
 <template name = "residentadvisor">
 	<h2>Évènements Paris (RA)</h2>
 	{{>reactiveTable collection=evenementsRA}}
+</template>
+
+<template name = "grevesLille">
+	<h2>Grèves (Lille)</h2>
+	{{>reactiveTable collection=grevesLille}}
 </template>
 
 
