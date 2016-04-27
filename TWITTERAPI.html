@@ -50,9 +50,8 @@
 </template>
 
 <template name="soireesLille">
-	<h2>Soirees Lille</h2>
-	<h4><span style="color:#e74c3c;">Soirée 1 : </span> {{ soiree_lille_1 }}</h4>
-	<h4><span style="color:#e74c3c;">Soirée 2 : </span> {{ soiree_lille_2 }}</h4>
+	<h2>Soirees Lille d'aujourd'hui</h2>
+	{{> reactiveTable collection=tablelillelanuit}}	
 </template>
 
 <template name="meteoParis">

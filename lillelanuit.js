@@ -1,3 +1,4 @@
+LilleLaNuit = new Mongo.Collection('lillelanuitsoiree');
 
 if (Meteor.isClient) {
 
@@ -6,20 +7,13 @@ if (Meteor.isClient) {
       console.log("error", error);
     };
 
-    console.log(result[0]);
-
-    Session.set("soireelille1", result[0]);
-    Session.set("soireelille2", result[1]);
+    
   });
 
+ 
     Template.soireesLille.helpers({
-    soiree_lille_1: function () {
-      return Session.get("soireelille1");
-    }
-  });
-    Template.soireesLille.helpers({
-    soiree_lille_2: function () {
-      return Session.get("soireelille2");
+    tablelillelanuit: function () {
+      return LilleLaNuit.find().fetch();
     }
   });
 }
@@ -34,25 +28,27 @@ if (Meteor.isServer) {
         result = Meteor.http.get("http://www.lillelanuit.com/agenda/soirees/");
         $ = cheerio.load(result.content);
         
-        var evenementLille= []
-        var lieu = []
+        var evenementLille= [];
+        var lieu = [];
+        LilleLaNuit.remove({});
 
-        $(' article > div > div > h2 > a').each(function(i, elem){
-          evenementLille[i]=$(this).text();
-        });
-        
-        $(' article > div > div > div:nth-child(n) ').each(function(u, elem){
-          lieu[u]=$(this).text();
-        });
-        
-        var information =[];
-        
-        for (var i = 0; i < 10; i++) {
-          information.push(evenementLille[i] +". Où? "+ lieu[i]);
-        };
-        
+        $('article > div > div > h2 > a').each(function(i, elem) {
+              evenementLille[i] = $(this).text();
+              $('article > div > div > div:nth-child(2) ').each(function(u, elem){
+                lieu[u] = $(this).text();
+              });
+              
 
-        return information;
+              var row = {};
+              row["eventLille"] = evenementLille[i];
+              row["lieu"] = lieu[i];
+              
+              LilleLaNuit.insert(row);
+            });
+
+        evenementLille.join(', ');
+
+        return evenementLille;
 
    
       },
