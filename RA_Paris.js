@@ -24,12 +24,7 @@ if (Meteor.isServer) {
 
     Meteor.methods({    
       getevent_RA: function () {
-        /*var now = new Date();
-        var annee   = now.getFullYear();
-        var mois    = now.getMonth() + 1;
-        var jour    = now.getDate();
-        "+mois+" ; "+annee+""+jour+"*/
-
+       
         result = Meteor.http.get("https://www.residentadvisor.net/events.aspx?ai=44&v=day");
         $ = cheerio.load(result.content);
 
@@ -44,9 +39,7 @@ if (Meteor.isServer) {
               $('article > div > h1 > span > a').each(function(i,elem) {
                 lieu [i] = $(this).text();
               });
-              /*$('#items > li:nth-child(1) > p > a').each(function(i,elem){
-                date [i] = $(this).text();
-              });*/
+              
               var now = new Date();
               var annee   = now.getFullYear();
               var mois    = ('0'+ (now.getMonth() + 1)).slice(-2);
