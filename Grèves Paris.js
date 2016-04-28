@@ -10,7 +10,7 @@ if (Meteor.isClient) {
   });
 
 
-  Template.grevesParis.helpers({
+  Template.grevesIledeFrance.helpers({
     grevesParis : function () {
       return GrevesParis.find().fetch();
     }
